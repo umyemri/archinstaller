@@ -11,6 +11,11 @@ Takes some pointers from https://github.com/LukeSmithxyz/LARBS but ultimately th
 * Full Luks LVM2 Disk Encryption - only for theft deterrent: https://en.wikipedia.org/wiki/Plausible_deniability
 * bootctl for EFI Loader
 
+## Guide
+1. Use initinstall.sh to get the system setup
+2. Use hardening.sh to get the system to not rip itself apart and needlessly expose itself to passersby. #shame!
+3. Use rising.sh to put on some makeup.
+
 ## References
 * https://wiki.archlinux.org/index.php/Installation_guide
 * https://wiki.archlinux.org/index.php/Systemd-boot
