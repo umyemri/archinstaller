@@ -6,7 +6,7 @@ Came from me having to reinstall a system over and over after screwing something
 Designed to work on a Dell XPS 13 9360 (aka kunkun).
 
 ## Basic Features
-* Full LVM2 Disk Encryption - only for theft deterrent: https://en.wikipedia.org/wiki/Plausible_deniability
+* Full Luks LVM2 Disk Encryption - only for theft deterrent: https://en.wikipedia.org/wiki/Plausible_deniability
 * bootctl for EFI Loader
 
 ## References
