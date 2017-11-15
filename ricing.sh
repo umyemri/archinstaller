@@ -3,7 +3,7 @@
 # ricing
 # getting all that sweet ui shiz. Lot of this is based on @LukeSmithXYZ's LARBS - https://github.com/LukeSmithxyz/LARBS
 
-# don't look at this! I'm just getting dumping this in.
+# don't look at this! I'm just dumping this in.
 pacman --noconfirm --needed -Sy 
 
 # Essentials...
