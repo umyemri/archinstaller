@@ -54,7 +54,7 @@ arch-chroot /mnt
 ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
 hwclock --systohc --utc
 locale-gen
-echo "kunkun" >> /etc/hostname
+echo "kunkun" >> /etc/hostname #name this whatever you like
 
 echo "editing & making things..."
 sleep 2
