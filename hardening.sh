@@ -7,6 +7,9 @@
 pacman -Sy sudo
 # edit /etc/sudoers
 
+# add user
+useradd -m -g wheel -s /bin/bash lim
+
 # fstab for sdds
 
 # lock root
