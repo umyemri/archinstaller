@@ -7,7 +7,7 @@ Came from me having to reinstall a system over and over after screwing something
 
 Designed to work on a Dell XPS 13 9360 (aka kunkun).
 
-Takes some pointers from https://github.com/LukeSmithxyz/LARBS but ultimately this is designed so I make my own solutions.
+Takes some pointers from @LukeSmithxyz LARBS: https://github.com/LukeSmithxyz/LARBS, but ultimately this is designed so I make my own solutions.
 
 ## Basic Features
 * Full Luks LVM2 Disk Encryption - only for theft deterrent: https://en.wikipedia.org/wiki/Plausible_deniability
