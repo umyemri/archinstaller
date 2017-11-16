@@ -1,4 +1,6 @@
 # archinstaller
+***To the one guy who forked this project (@Tw333x)*** : this is by no means a finished product. Watch out! 
+
 Just a place for my installer scripts.
 
 Came from me having to reinstall a system over and over after screwing something up.
