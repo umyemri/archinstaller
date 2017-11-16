@@ -16,7 +16,7 @@ Takes some pointers from @LukeSmithxyz LARBS: https://github.com/LukeSmithxyz/LA
 ## Guide
 1. Use initinstall.sh to get the system setup
 2. Use hardening.sh to get the system to not rip itself apart and needlessly expose itself to passersby. #shame!
-3. Use rising.sh to put on some makeup.
+3. Use ricing.sh to put on some makeup.
 
 ## References
 * https://wiki.archlinux.org/index.php/Installation_guide
