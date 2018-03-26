@@ -10,7 +10,7 @@ Designed to work on a Dell XPS 13 9360 (aka kunkun).
 Takes some pointers from @LukeSmithxyz LARBS: https://github.com/LukeSmithxyz/LARBS, but ultimately this is designed so I make my own solutions.
 
 ## Basic Features
-* Full Luks LVM2 Disk Encryption - only for theft deterrent: https://en.wikipedia.org/wiki/Plausible_deniability
+* Partial Luks LVM2 Disk Encryption (/boot left unencrypted, I'll address full disk at a later date) - only for theft deterrent: https://en.wikipedia.org/wiki/Plausible_deniability
 * bootctl for EFI Loader
 
 ## Guide
