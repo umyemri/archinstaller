@@ -7,7 +7,7 @@
 echo "partitioning drive..."
 sleep 2
 sgdisk -og /dev/sda
-sgdisk -n 1:2048:+512MiB -t 1:ef00 /dev/sda
+sgdisk -n 1:2048:+200MiB -t 1:ef00 /dev/sda
 start_of='sgdisk -f /dev/sda'
 end_of='sgdisk -E /dev/sda'
 sgdisk -n 2:$start_of:$end_of -t 2:8e00 /dev/sda
@@ -19,8 +19,8 @@ cryptsetup luksFormat /dev/sda2
 cryptsetup open --type luks /dev/sda2 lvm
 pvcreate --dataalignment 1m /dev/mapper/lvm
 vgcreate volume /dev/mapper/lvm
-lvcreate -L 30GB volume -n root
-lvcreate -L 16GB volume -n swap
+lvcreate -L 20GB volume -n root
+lvcreate -L 12GB volume -n swap
 lvcreate -l 100%FREE volume -n home
 
 echo "activating lvm..."
