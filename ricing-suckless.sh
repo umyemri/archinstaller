@@ -80,7 +80,7 @@ pacman --needed -Sy xorg-xinit xorg-server ttf-inconsolata  rsync openvpn \
 #
 # blender and gimp are large applications. if you're trying to run a lean
 # system, maybe you don't want to install them. and pandoc installs every
-# god damn haskell lib in the planet. maybe you want to install those 
+# god damn haskell lib on the planet. maybe you want to install those 
 # later...
 #
 # blender         : 3d swiss army knife
