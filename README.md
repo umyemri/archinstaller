@@ -10,13 +10,17 @@ Designed to work on a Dell XPS 13 9360 (aka kunkun).
 Takes some pointers from @LukeSmithxyz LARBS: https://github.com/LukeSmithxyz/LARBS, but ultimately this is designed so I make my own solutions.
 
 ## Basic Features
-* Partial Luks LVM2 Disk Encryption (/boot left unencrypted, I'll address full disk at a later date) - only for theft deterrent: https://en.wikipedia.org/wiki/Plausible_deniability
+* Partial Luks LVM2 Disk Encryption (/boot left unencrypted, I'll address full disk at a later date) - only as a theft deterrent: https://en.wikipedia.org/wiki/Plausible_deniability
 * bootctl for EFI Loader
+* two flavors for wm:
+  * i3-gaps - basically took @lukesmithxyz LARBS as a template, used it as a tutorial in some ways.
+  * suckless combination (dwm, st, lemonbar) - heavily inspired by @MitchWeaver r/unixporn posts and git repos. love his work!
+* [draft] japanese input through uim.
 
 ## Guide
 1. Use initinstall.sh to get the system setup
 2. Use hardening.sh to get the system to not rip itself apart and needlessly expose itself to passersby. #shame!
-3. Use ricing.sh to put on some makeup.
+3. Use ricing-XXXX.sh to put on some makeup.
 
 ## References
 * https://wiki.archlinux.org/index.php/Installation_guide
