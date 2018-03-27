@@ -31,6 +31,7 @@ pacstrap -i /mnt base base-devel wireless_tools networkmanager \
 # xorg-xinit      : xorg initialization system
 # xorg-server     : xorg server... yeah
 # ttf-inconsolata : nice font
+# bdf-unifont     : bitmap font that covers japanese characters
 # rsync           : backup util
 # openvpn         : vpn all the things
 # openresolv      : resolve all the dns'
@@ -71,13 +72,14 @@ pacstrap -i /mnt base base-devel wireless_tools networkmanager \
 # gimp            : basically close enough to photoshop
 # transmission-cli: cli transmission... yeah 
 # screenfetch     : little os cli printout
+# uim             : multilingual input
 #
-pacman --needed -Sy xorg-xinit xorg-server ttf-inconsolata rsync openvpn \
-    openresolv git unzip unrar p7zip ntfs-3g exfat-utils dosfstools ranger \
-    w3m htop feh ffmpeg mpv calcurse newsboat arandr mediainfo poppler highlight \
-    mpd mpc imagemagick atool libcaca compton transset-df mupdf evince youtube-dl \
-    youtube-viewer pandoc python-dbus python-gobject blender gimp \
-    transmission-cli screenfetch
+pacman --needed -Sy xorg-xinit xorg-server ttf-inconsolata  bdf-unifont rsync \
+    openvpn openresolv git unzip unrar p7zip ntfs-3g exfat-utils dosfstools \
+    ranger w3m htop feh ffmpeg mpv calcurse newsboat arandr mediainfo poppler \
+    highlight mpd mpc imagemagick atool libcaca compton transset-df mupdf \
+     evince youtube-dl youtube-viewer pandoc python-dbus python-gobject \
+    blender gimp transmission-cli screenfetch uim
 
 ## functions that will be needed for st, dwm, surf and lemonbar
 #
@@ -101,3 +103,5 @@ aurget st
 aurget surf
 aurget lemonbar
 aurget apulse
+
+aurinstall ttf-monapo anthy-kaomoji
