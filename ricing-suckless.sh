@@ -98,10 +98,13 @@ aurget() { curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz \
 ## get you packages ready, you'll need to edit their config.h files to your liking
 #  or... you could just accept them as is. 
 #
-aurget dwm
-aurget st
-aurget surf
-aurget lemonbar
-aurget apulse
+suckless=('dwm' 'st' 'surf' 'lemonbar-git')
+miscaur=('ttf-monapo' 'anthy-kaomoji' 'apulse')
 
-aurinstall ttf-monapo anthy-kaomoji
+for i in ${suckless[@]}; do
+    aurget(${i})
+done
+
+for i in ${miscaur[@]}; do
+    aurinstall(${i})
+done
