@@ -20,8 +20,8 @@
 # wireless_tools  : wpa_supplicant and the like
 # networkmanager  : trust me... you don't want to do wireless yourself
 # xf86-video-intel: intel video drivers
-# vim                : more than vi
-# wget              : when curl doesn't cut it
+# vim             : more than vi
+# wget            : when curl doesn't cut it
 # 
 pacstrap -i /mnt base base-devel wireless_tools networkmanager \
     xf86-video-intel vim wget 
@@ -31,7 +31,6 @@ pacstrap -i /mnt base base-devel wireless_tools networkmanager \
 # xorg-xinit      : xorg initialization system
 # xorg-server     : xorg server... yeah
 # ttf-inconsolata : nice font
-# bdf-unifont     : bitmap font that covers japanese characters
 # rsync           : backup util
 # openvpn         : vpn all the things
 # openresolv      : resolve all the dns'
@@ -65,21 +64,40 @@ pacstrap -i /mnt base base-devel wireless_tools networkmanager \
 # evince          : document viewer
 # youtube-dl      : cli youtube downloader / can be used for many sites
 # youtube-viewer  : viewer util
-# pandoc          : document converter (very haskell heavy)
 # python-dbus     : python dbus handler (forces python3 install)
 # python-gobject  : python gtk handler
-# blender         : 3d swiss army knife
-# gimp            : basically close enough to photoshop
 # transmission-cli: cli transmission... yeah 
 # screenfetch     : little os cli printout
-# uim             : multilingual input
 #
-pacman --needed -Sy xorg-xinit xorg-server ttf-inconsolata  bdf-unifont rsync \
-    openvpn openresolv git unzip unrar p7zip ntfs-3g exfat-utils dosfstools \
-    ranger w3m htop feh ffmpeg mpv calcurse newsboat arandr mediainfo poppler \
+pacman --needed -Sy xorg-xinit xorg-server ttf-inconsolata  rsync openvpn \
+    openresolv git unzip unrar p7zip ntfs-3g exfat-utils dosfstools ranger \
+    w3m htop feh ffmpeg mpv calcurse newsboat arandr mediainfo poppler \
     highlight mpd mpc imagemagick atool libcaca compton transset-df mupdf \
-     evince youtube-dl youtube-viewer pandoc python-dbus python-gobject \
-    blender gimp transmission-cli screenfetch uim
+    evince youtube-dl youtube-viewer  python-dbus python-gobject \
+    transmission-cli screenfetch 
+
+## huge applications
+#
+# blender and gimp are large applications. if you're trying to run a lean
+# system, maybe you don't want to install them. and pandoc installs every
+# god damn haskell lib in the planet. maybe you want to install those 
+# later...
+#
+# blender         : 3d swiss army knife
+# gimp            : basically close enough to photoshop
+# pandoc          : document converter (very haskell heavy)
+#
+pacman --needed -S blender gimp pandoc
+
+## japanese support characters
+#
+# You might be wondering why I'm mentioning japanese at all: I translate manga
+# on the side. This is just features I want. Feel free to remove this section
+# if you want.
+#
+# bdf-unifont     : bitmap font that covers japanese characters
+# uim             : multilingual input
+pacman --needed -S uim bdf-unifont 
 
 ## functions that will be needed for st, dwm, surf and lemonbar
 #
@@ -97,6 +115,11 @@ aurget() { curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz \
 
 ## get you packages ready, you'll need to edit their config.h files to your liking
 #  or... you could just accept them as is. 
+#
+# if i have to explain the suckless group why are you even using this script?
+#
+# ttf-monapo & anthy-kaomoji are a font and input method for japanese.
+# apulse is a lean pulse emulation. pretty slick!
 #
 suckless=('dwm' 'st' 'surf' 'lemonbar-git')
 miscaur=('ttf-monapo' 'anthy-kaomoji' 'apulse')
