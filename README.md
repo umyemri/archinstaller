@@ -15,7 +15,7 @@ Takes some pointers from @LukeSmithxyz LARBS: https://github.com/LukeSmithxyz/LA
 * two flavors for wm:
   * i3-gaps - basically took @lukesmithxyz LARBS as a template, used it as a tutorial in some ways.
   * suckless combination (dwm, st, lemonbar) - heavily inspired by @MitchWeaver r/unixporn posts and git repos. love his work!
-* [draft] japanese input through uim.
+* [draft] japanese input through uim / anthy.
 
 ## Guide
 1. Use initinstall.sh to get the system setup
