@@ -49,11 +49,7 @@ pacstrap -i /mnt base base-devel wireless_tools networkmanager \
 # mpv             : minimal video player
 # calcurse        : cli calendar / curses based
 # newsboat        : cli rss reader
-# pulseaudio      : pulse audio drivers / server
-# pulseaudio-alsa : pulse - alsa system
 # arandr          : display handler
-# pavucontrol     : gui for pulse
-# pamixer         : pulse mixer
 # mediainfo       : media meta data reader
 # poppler         : pdf render library
 # highlight       : fast and flexible source code highlighter
@@ -78,9 +74,8 @@ pacstrap -i /mnt base base-devel wireless_tools networkmanager \
 #
 pacman --needed -Sy xorg-xinit xorg-server ttf-inconsolata rsync openvpn \
     openresolv git unzip unrar p7zip ntfs-3g exfat-utils dosfstools ranger \
-    w3m htop feh ffmpeg mpv calcurse newsboat pulseaudio pulseaudio-alsa \
-    arandr pavucontrol pamixer mediainfo poppler highlight mpd mpc \
-    imagemagick atool libcaca compton transset-df mupdf evince youtube-dl \
+    w3m htop feh ffmpeg mpv calcurse newsboat arandr mediainfo poppler highlight \
+    mpd mpc imagemagick atool libcaca compton transset-df mupdf evince youtube-dl \
     youtube-viewer pandoc python-dbus python-gobject blender gimp \
     transmission-cli screenfetch
 
@@ -97,3 +92,12 @@ aurinstall() { curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz
     && rm -rf $1 $1.tar.gz ;}
 aurget() { curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz \
     && tar -xvf $1.tar.gz && cd $1 ;}
+
+## get you packages ready, you'll need to edit their config.h files to your liking
+#  or... you could just accept them as is. 
+#
+aurget dwm
+aurget st
+aurget surf
+aurget lemonbar
+aurget apulse
