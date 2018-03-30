@@ -51,12 +51,17 @@ sleep 2
 pacstrap -i /mnt base base-devel wireless_tools networkmanager \
     xf86-video-intel vim wget sudo
 genfstab -U /mnt >> /mnt/etc/fstab
-# might stop working with the next command... maybe...
+
+#### might stop working with the next command... maybe...
+
 arch-chroot /mnt
 
-# might need to break this script off here.
+#### might need to break this script off here.
+
 ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
 hwclock --systohc --utc
+# edit /etc/locale.gen to include your swankass language
+vim /etc/locale.gen
 locale-gen
 echo "kunkun" >> /etc/hostname #name this whatever you like
 
@@ -82,8 +87,11 @@ echo "options cryptdevice=UUID=$datUUID:lvm root=/dev/mapper/volume-root quiet r
 
 # add user
 useradd -m -g wheel -s /bin/bash lim
-
-# edit /etc/sudoers
+visudo
 
 echo "done..."
-echo "use passwd for root then restart. bye. ∠(ᐛ 」∠)＿"
+echo "bye. ∠(ᐛ 」∠)＿"
+sleep 5
+exit
+umount -R /mnt
+reboot
