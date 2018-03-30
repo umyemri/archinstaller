@@ -3,7 +3,12 @@
 # themed around use of dwm, st, surf, dmenu
 #
 
-## pacstrap during iniital install
+## pacstrap during initial install
+#
+# previously in the init script, we installed the following:
+#
+# pacstrap -i /mnt base base-devel wireless_tools networkmanager \
+#   xf86-video-intel vim wget 
 #
 # base contains: bash bzip2 coreutils cryptsetup device-mapper dhcpcd diffutils
 #  e2fsprogs file filesystem findutils gawk gcc-libs gettext glibc grep gzip
@@ -21,10 +26,8 @@
 # networkmanager  : trust me... you don't want to do wireless yourself
 # xf86-video-intel: intel video drivers
 # vim             : more than vi
-# wget            : when curl doesn't cut it
+# wget            : when curl doesn't cut it, recursively 
 # 
-pacstrap -i /mnt base base-devel wireless_tools networkmanager \
-    xf86-video-intel vim wget 
 
 ## post install packages
 #
