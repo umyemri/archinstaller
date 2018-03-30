@@ -2,7 +2,8 @@
 
 # arch installer script
 # by andrew
-# works on Dell XPS 13 9360 as of 2017/11/15
+# works on Dell XPS 13 9360 as of [Insert Date]
+#
 
 echo "partitioning drive..."
 sleep 2
@@ -48,10 +49,12 @@ mount /dev/volume/home /mnt/home
 echo "installing base system..."
 sleep 2
 pacstrap -i /mnt base base-devel wireless_tools networkmanager \
-    xf86-video-intel vim wget 
+    xf86-video-intel vim wget sudo
 genfstab -U /mnt >> /mnt/etc/fstab
 # might stop working with the next command... maybe...
 arch-chroot /mnt
+
+# might need to break this script off here.
 ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
 hwclock --systohc --utc
 locale-gen
@@ -66,8 +69,7 @@ grep -q "$search" "$file" && sed -i "s#$search#$replace#" "$file" || echo "$repl
 mkinitcpio -p linux
 
 echo "installing bootctl..."
-bootctl --path=/boot install
-> /boot/loader/loader.conf
+bootctl --path=/boot install 
 echo "default arch" >> /boot/loader/loader.conf
 echo "timeout 0" >> /boot/loader/loader.conf
 echo "editor 0" >> /boot/loader/loader.conf
@@ -77,6 +79,11 @@ echo "title Arch" >> /boot/loader/entries/arch.conf
 echo "linux /vmlinuz-linux" >> /boot/loader/entries/arch.conf
 echo "initrd /initramfs-linux.img" >> /boot/loader/entries/arch.conf
 echo "options cryptdevice=UUID=$datUUID:lvm root=/dev/mapper/volume-root quiet rw" >> /boot/loader/entries/arch.conf
+
+# add user
+useradd -m -g wheel -s /bin/bash lim
+
+# edit /etc/sudoers
 
 echo "done..."
 echo "use passwd for root then restart. bye. ∠(ᐛ 」∠)＿"
