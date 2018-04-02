@@ -118,7 +118,7 @@ aurinstall() { curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz
     && tar -xvf $1.tar.gz && cd $1 && makepkg --noconfirm -si && cd .. \
     && rm -rf $1 $1.tar.gz ;}
 aurget() { curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz \
-    && tar -xvf $1.tar.gz && cd $1 ;}
+    && tar -xvf $1.tar.gz ;}
 
 ## get you packages ready, you'll need to edit their config.h files to your liking
 #  or... you could just accept them as is. 
