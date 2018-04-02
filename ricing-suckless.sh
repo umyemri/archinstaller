@@ -7,8 +7,8 @@
 #
 # previously in the init script, we installed the following:
 #
-# pacstrap -i /mnt base base-devel wireless_tools networkmanager \
-#   xf86-video-intel vim wget sudo
+# pacstrap -i /mnt base base-devel wireless_tools xf86-video-intel \
+#   vim wget sudo
 #
 # base contains: bash bzip2 coreutils cryptsetup device-mapper dhcpcd diffutils
 #  e2fsprogs file filesystem findutils gawk gcc-libs gettext glibc grep gzip
@@ -24,6 +24,9 @@
 #
 # wireless_tools  : wpa_supplicant and the like
 # networkmanager  : trust me... you don't want to do wireless yourself
+#  *Edit: that's bullshit it seems. dhcpcd, wpa_supplicant work just fine
+#  on their own. Scripted an easy solution where nm isn't required in the 
+#  slightest. use wpa_passphrase to generate a config.
 # xf86-video-intel: intel video drivers
 # vim             : more than vi
 # wget            : when curl doesn't cut it, recursively
