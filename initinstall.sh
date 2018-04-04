@@ -49,7 +49,7 @@ mount /dev/volume/home /mnt/home
 echo "installing base system..."
 sleep 2
 pacstrap -i /mnt base base-devel wireless_tools xf86-video-intel \
-    vim wget sudo
+    vim wget
 genfstab -U /mnt >> /mnt/etc/fstab
 
 #### might stop working with the next command... maybe...
