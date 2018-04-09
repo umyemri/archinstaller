@@ -91,10 +91,10 @@ pacman --needed -Sy xorg-xinit xorg-server ttf-inconsolata  rsync openvpn \
 # later...
 #
 # blender         : 3d swiss army knife
-# gimp            : basically close enough to photoshop
+# gimp / krita    : basically close enough to photoshop
 # pandoc          : document converter (very haskell heavy)
 #
-pacman --needed -S blender gimp pandoc
+pacman --needed -S blender gimp krita pandoc
 
 ## japanese support characters
 #
