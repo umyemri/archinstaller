@@ -35,22 +35,28 @@ vim /etc/ssh/sshd_config
 # [tbd]
 
 ## network setup
-# strike these, this makes automatic netneg, which is not secure
+# don't use these, this makes netneg automatic, which is not secure
+# there's probably someway to make these more secure. but i've been 
+# working on some alternatives with basic wpa_supp and dhcpcd that
+# work great for my purposes. vpn is mullvad openvpn/resolv. not
+# a lot revealed here. just a bird's eye view of my process. probably
+# release it in my dotfiles repo.
+#
+#systemctl enable NetworkManager
+#systemctl start NetworkManager
+#
 # prep needs to occur before init net connections.
 #   1. mac spoof
 #   2. vpn iso setup
 #   3. net con
 #   4. vpn init
 #   ?. net usage
-#   e. radio down
-#systemctl enable NetworkManager
-#systemctl start NetworkManager
-
-# add these to .bashrc
-alias mw = "sh .config/scripts/mac-wireless.sh"
-alias me = "sh .config/scripts/mac-ether.sh"
-alias vu = "sh .config/scripts/vpn-up.sh"
-alias vd = "sh .config/scripts/vpn-down.sh"
-# consider merging v*/w*
-alias wu = "sh .config/scripts/wireless-up.sh"
-alias wd = "sh .config/scripts/wireless-down.sh"
+#  x1. radio down
+#  x2. dhcp purge
+#
+# merged these into a script for network handling (now part of .bashrc):
+# alias wu = "sh .config/scripts/network.sh wireless-up"
+# alias wd = "sh .config/scripts/network.sh wireless-down"
+# alias eu = "sh .config/scripts/network.sh ether-up"
+# alias ed = "sh .config/scripts/network.sh ether-down" # lol
+#
