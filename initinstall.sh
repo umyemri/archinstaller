@@ -10,7 +10,7 @@ echo -n '    user name: '
 read username
 echo -n '    computer name: '
 read hostname
-echo "okay, $username! i will get this started for you."
+echo "okay, $username! i\'ll get $hostname setup for you."
 echo -n '    may i begin (y/n)? '
 read continue
 if [ $continue == 'n' ]; then
