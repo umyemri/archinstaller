@@ -97,11 +97,11 @@ sudo pacman --needed -Sy xorg-xinit xorg-server ttf-inconsolata rsync openvpn \
 # suckless=('dwm' 'st' 'surf')
 # miscaur=('lemonbar-git' 'ttf-monapo' 'anthy-kaomoji' 'apulse')
 #
-echo "aurinstall() { curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz \" >> .bashrc
-echo "    && tar -xvf $1.tar.gz && cd $1 && makepkg --noconfirm -si && cd .. \" >> .bashrc
-echo "    && rm -rf $1 $1.tar.gz ;}" >> .bashrc
-echo "aurget() { curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz \" >> .bashrc
-echo "    && tar -xvf $1.tar.gz ;}" >> .bashrc
+echo "aurinstall() { curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/\$1.tar.gz \\" >> .bashrc
+echo "    && tar -xvf \$1.tar.gz && cd \$1 && makepkg --noconfirm -si && cd .. \\" >> .bashrc
+echo "    && rm -rf \$1 \$1.tar.gz ;}" >> .bashrc
+echo "aurget() { curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/\$1.tar.gz \\" >> .bashrc
+echo "    && tar -xvf \$1.tar.gz ;}" >> .bashrc
 # =====
 # [uncomment the following commands if you want these features]
 # =====
