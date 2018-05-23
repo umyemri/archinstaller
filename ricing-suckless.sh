@@ -1,15 +1,14 @@
 # suckless rice 
-#
+# =====
 # themed around use of dwm, st, surf, dmenu
 #
 
 ## pacstrap during initial install
 #
 # previously in the init script, we installed the following:
-#
-# pacstrap -i /mnt base base-devel wireless_tools xf86-video-intel \
-#   vim wget sudo
-#
+#     $ pacstrap -i /mnt base base-devel wireless_tools wpa_supplicant \
+#     $     xf86-video-intel vim wget
+#   
 # base contains: bash bzip2 coreutils cryptsetup device-mapper dhcpcd diffutils
 #  e2fsprogs file filesystem findutils gawk gcc-libs gettext glibc grep gzip
 #  inetutils iproute2 iputils jfsutils less licenses linux logrotate lvm2 
@@ -22,18 +21,18 @@
 #  flex gawk gcc gettext grep groff gzip libtool m4 make pacman patch
 #  pkg-config sed sudo systemd texinfo util-linux which
 #
-# wireless_tools  : wpa_supplicant and the like
-# networkmanager  : trust me... you don't want to do wireless yourself
+# wireless_tools  : basic wireless programs
+# wpa_supplicant  : tool set for dealing with WPA com
+# --networkmanager--  : trust me... you don't want to do wireless yourself
 #  *Edit: that's bullshit it seems. dhcpcd, wpa_supplicant work just fine
 #  on their own. Scripted an easy solution where nm isn't required in the 
 #  slightest. use wpa_passphrase to generate a config.
 # xf86-video-intel: intel video drivers
 # vim             : more than vi
 # wget            : when curl doesn't cut it, recursively
-# sudo            : super user dew
 # 
 
-## post install packages
+## post install packages - the basics
 #
 # xorg-xinit      : xorg initialization system
 # xorg-server     : xorg server... yeah
@@ -54,36 +53,65 @@
 # feh             : minimal image viewer
 # ffmpeg          : video/audio swiss army knife
 # mpv             : minimal video player
-# calcurse        : cli calendar / curses based
 # newsboat        : cli rss reader
 # arandr          : display handler
 # mediainfo       : media meta data reader
 # poppler         : pdf render library
 # highlight       : fast and flexible source code highlighter
-# mpd             : server-side application for playing music
-# mpc             : cli interface for mpd
 # imagemagick     : image manipulation program, screenshots through import
 # atool           : compression handler
-# libcaca         : cli visualizer library
 # compton         : compositing suite for wm
 # transset-df     : transparency handler
+# xorg-xbacklight : backlight handling
 # mupdf           : pdf / xps viewer
 # evince          : document viewer
-# youtube-dl      : cli youtube downloader / can be used for many sites
-# youtube-viewer  : viewer util
-# python-dbus     : python dbus handler (forces python3 install)
-# python-gobject  : python gtk handler
-# transmission-cli: cli transmission... yeah 
+# youtube-dl      : cli youtube downloader / can be used for many sites...
 # screenfetch     : little os cli printout
 #
-pacman --needed -Sy xorg-xinit xorg-server ttf-inconsolata  rsync openvpn \
-    openresolv git unzip unrar p7zip ntfs-3g exfat-utils dosfstools ranger \
-    w3m htop feh ffmpeg mpv calcurse newsboat arandr mediainfo poppler \
-    highlight mpd mpc imagemagick atool libcaca compton transset-df mupdf \
-    evince youtube-dl youtube-viewer  python-dbus python-gobject \
-    transmission-cli screenfetch 
 
-## huge applications
+sudo pacman --needed -Sy xorg-xinit xorg-server ttf-inconsolata rsync openvpn \
+    openresolv git unzip unrar p7zip ntfs-3g exfat-utils dosfstools ranger \
+    w3m htop feh ffmpeg mpv newsboat arandr mediainfo poppler highlight \
+    imagemagick atool compton transset-df xorg-xbacklight mupdf evince \
+    youtube-dl screenfetch 
+
+
+## functions that will be needed for st, dwm, surf and lemonbar
+#
+# aurinstall is lukesmithxyz creation. many thanks, sir.
+# aurget is my alteration, because sometimees you're going to want to alter
+# the config.h before compiling.
+#         + don't forget to updpkgsums after changing anything. other wise,
+#           makepkg will complain.
+# this is all posted to the .bashrc file for usage with suckless libraries
+#
+# aurinstall : lukesmithxyz function, i've found useful.
+# aurget     : a modification on the above to pause install so you can edit them
+#
+# get you packages ready, you'll need to edit their config.h files to your liking
+# or... you could just accept them as is with aurinstall. it won't look pretty...
+#
+# if i have to explain the suckless group, why are you even using this script?
+# https://suckless.org if you are still confused
+#
+# ttf-monapo & anthy-kaomoji are a font and input method for japanese.
+# apulse is a lean pulse emulation. pretty slick!
+#
+# suckless=('dwm' 'st' 'surf')
+# miscaur=('lemonbar-git' 'ttf-monapo' 'anthy-kaomoji' 'apulse')
+#
+
+echo "aurinstall() { curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz \" >> .bashrc
+echo "    && tar -xvf $1.tar.gz && cd $1 && makepkg --noconfirm -si && cd .. \" >> .bashrc
+echo "    && rm -rf $1 $1.tar.gz ;}" >> .bashrc
+echo "aurget() { curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz \" >> .bashrc
+echo "    && tar -xvf $1.tar.gz ;}" >> .bashrc
+
+# =====
+# [uncomment the following commands if you want these features]
+# =====
+
+## huge / misc applications
 #
 # blender and gimp are large applications. if you're trying to run a lean
 # system, maybe you don't want to install them. and pandoc installs every
@@ -93,8 +121,12 @@ pacman --needed -Sy xorg-xinit xorg-server ttf-inconsolata  rsync openvpn \
 # blender         : 3d swiss army knife
 # gimp / krita    : basically close enough to photoshop
 # pandoc          : document converter (very haskell heavy)
+# python          : python 3, my swissarmy knife
+# r               : statistical modeling programming language, and great calculator
+# firefox         : well... you might not want this. i use qute and waterfox
 #
-pacman --needed -S blender gimp krita pandoc
+
+# sudo pacman --needed -S blender gimp krita pandoc python r firefox
 
 ## japanese support characters
 #
@@ -104,37 +136,6 @@ pacman --needed -S blender gimp krita pandoc
 #
 # bdf-unifont     : bitmap font that covers japanese characters
 # uim             : multilingual input
-pacman --needed -S uim bdf-unifont 
+#
 
-## functions that will be needed for st, dwm, surf and lemonbar
-#
-# aurinstall is lukesmithxyz creation. many thanks, sir.
-# aurget is my alteration, because sometimees you're going to want to alter
-# the config.h before compiling.
-#         + don't forget to updpkgsums after changing anything. other wise,
-#           makepkg will complain.
-#
-aurinstall() { curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz \
-    && tar -xvf $1.tar.gz && cd $1 && makepkg --noconfirm -si && cd .. \
-    && rm -rf $1 $1.tar.gz ;}
-aurget() { curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz \
-    && tar -xvf $1.tar.gz ;}
-
-## get you packages ready, you'll need to edit their config.h files to your liking
-#  or... you could just accept them as is. 
-#
-# if i have to explain the suckless group why are you even using this script?
-#
-# ttf-monapo & anthy-kaomoji are a font and input method for japanese.
-# apulse is a lean pulse emulation. pretty slick!
-#
-suckless=('dwm' 'st' 'surf' 'lemonbar-git')
-miscaur=('ttf-monapo' 'anthy-kaomoji' 'apulse')
-
-for i in ${suckless[@]}; do
-    aurget(${i})
-done
-
-for i in ${miscaur[@]}; do
-    aurinstall(${i})
-done
+# sudo pacman --needed -S uim bdf-unifont 
