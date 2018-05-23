@@ -2,7 +2,6 @@
 # =====
 # themed around use of dwm, st, surf, dmenu
 #
-
 ## pacstrap during initial install
 #
 # previously in the init script, we installed the following:
@@ -67,15 +66,13 @@
 # evince          : document viewer
 # youtube-dl      : cli youtube downloader / can be used for many sites...
 # screenfetch     : little os cli printout
+# dmenu           : for dwm 
 #
-
 sudo pacman --needed -Sy xorg-xinit xorg-server ttf-inconsolata rsync openvpn \
     openresolv git unzip unrar p7zip ntfs-3g exfat-utils dosfstools ranger \
     w3m htop feh ffmpeg mpv newsboat arandr mediainfo poppler highlight \
     imagemagick atool compton transset-df xorg-xbacklight mupdf evince \
-    youtube-dl screenfetch 
-
-
+    youtube-dl screenfetch dmenu
 ## functions that will be needed for st, dwm, surf and lemonbar
 #
 # aurinstall is lukesmithxyz creation. many thanks, sir.
@@ -100,17 +97,14 @@ sudo pacman --needed -Sy xorg-xinit xorg-server ttf-inconsolata rsync openvpn \
 # suckless=('dwm' 'st' 'surf')
 # miscaur=('lemonbar-git' 'ttf-monapo' 'anthy-kaomoji' 'apulse')
 #
-
 echo "aurinstall() { curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz \" >> .bashrc
 echo "    && tar -xvf $1.tar.gz && cd $1 && makepkg --noconfirm -si && cd .. \" >> .bashrc
 echo "    && rm -rf $1 $1.tar.gz ;}" >> .bashrc
 echo "aurget() { curl -O https://aur.archlinux.org/cgit/aur.git/snapshot/$1.tar.gz \" >> .bashrc
 echo "    && tar -xvf $1.tar.gz ;}" >> .bashrc
-
 # =====
 # [uncomment the following commands if you want these features]
 # =====
-
 ## huge / misc applications
 #
 # blender and gimp are large applications. if you're trying to run a lean
@@ -125,9 +119,7 @@ echo "    && tar -xvf $1.tar.gz ;}" >> .bashrc
 # r               : statistical modeling programming language, and great calculator
 # firefox         : well... you might not want this. i use qute and waterfox
 #
-
 # sudo pacman --needed -S blender gimp krita pandoc python r firefox
-
 ## japanese support characters
 #
 # You might be wondering why I'm mentioning japanese at all: I translate manga
@@ -137,5 +129,5 @@ echo "    && tar -xvf $1.tar.gz ;}" >> .bashrc
 # bdf-unifont     : bitmap font that covers japanese characters
 # uim             : multilingual input
 #
-
 # sudo pacman --needed -S uim bdf-unifont 
+exit
