@@ -55,8 +55,8 @@ vim /etc/ssh/sshd_config
 #  x2. dhcp purge
 #
 # merged these into a script for network handling (now part of .bashrc):
-# alias wu = "sh .config/scripts/network.sh wireless-up"
-# alias wd = "sh .config/scripts/network.sh wireless-down"
-# alias eu = "sh .config/scripts/network.sh ether-up"
-# alias ed = "sh .config/scripts/network.sh ether-down" # lol
+# alias wu = "sh ~/.config/scripts/network.sh wireless-up"
+# alias wd = "sh ~/.config/scripts/network.sh wireless-down"
+# alias eu = "sh ~/.config/scripts/network.sh ether-up"
+# alias ed = "sh ~/.config/scripts/network.sh ether-down" # lol
 #
