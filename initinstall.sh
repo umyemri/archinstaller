@@ -3,19 +3,34 @@
 # arch installer script
 # by andrew
 # works on Dell XPS 13 9360 as of [Insert Date]
+# built for uefi - see bootctl
+# assumes sda is the install location.
 #
 
+echo 'hi! can i get some details from you?'
+echo -n '    user name: '
+read username
+echo -n '    computer name: '
+read hostname
+echo "okay, $username! i will get this started for you."
+echo -n '    may i begin (y/n)? '
+read continue
+if [ $continue == 'n' ]; then
+	echo 'oh! okay, exiting. bye!'
+	exit
+fi
+
 echo "partitioning drive..."
-sleep 2
+sleep 1
 sgdisk -og /dev/sda
 sgdisk -n 1:2048:+200MiB -t 1:ef00 /dev/sda
-start_of='sgdisk -f /dev/sda'
-end_of='sgdisk -E /dev/sda'
+start_of=$(sgdisk -f /dev/sda)
+end_of=$(sgdisk -E /dev/sda)
 sgdisk -n 2:$start_of:$end_of -t 2:8e00 /dev/sda
 sgdisk -p /dev/sda
 
 echo "making luks lvm..."
-sleep 2
+sleep 1
 cryptsetup luksFormat /dev/sda2
 cryptsetup open --type luks /dev/sda2 lvm
 pvcreate --dataalignment 1m /dev/mapper/lvm
@@ -25,13 +40,13 @@ lvcreate -L 12GB volume -n swap
 lvcreate -l 100%FREE volume -n home
 
 echo "activating lvm..."
-sleep 2
+sleep 1
 modprobe dm_mod
 vgscan
 vgchange -ay
 
 echo "formatting drives..."
-sleep 2
+sleep 1
 mkfs.fat -F32 /dev/sda1
 mkfs.ext4 /dev/volume/root
 mkfs.ext4 /dev/volume/home
@@ -39,7 +54,7 @@ mkswap /dev/volume/swap
 swapon /dev/volume/swap
 
 echo "mounting drives..."
-sleep 2
+sleep 1
 mount /dev/volume/root /mnt
 mkdir /mnt/boot
 mkdir /mnt/home
@@ -47,9 +62,11 @@ mount /dev/sda1 /mnt/boot
 mount /dev/volume/home /mnt/home
 
 echo "installing base system..."
-sleep 2
-pacstrap -i /mnt base base-devel wireless_tools xf86-video-intel \
-    vim wget
+sleep 1
+# --noconfirm is generally a bad idea, you should read everything
+# ...do as i say, not as i do
+pacstrap --noconfirm -i /mnt base base-devel wireless_tools wpa_supplicant \
+    xf86-video-intel vim wget
 genfstab -U /mnt >> /mnt/etc/fstab
 
 #### might stop working with the next command... maybe...
@@ -63,10 +80,10 @@ hwclock --systohc --utc
 # edit /etc/locale.gen to include your swankass language
 vim /etc/locale.gen
 locale-gen
-echo "kunkun" >> /etc/hostname #name this whatever you like
+echo hostname >> /etc/hostname
 
 echo "editing & making things..."
-sleep 2
+sleep 1
 file=/mnt/archbox/etc/mkinitcpio.conf
 search="^\s*HOOKS=.*$"
 replace="HOOKS=\\\"base udev autodetect modconf block keymap encrypt lvm2 filesystems keyboard shutdown fsck usr\\\""
@@ -86,7 +103,7 @@ echo "initrd /initramfs-linux.img" >> /boot/loader/entries/arch.conf
 echo "options cryptdevice=UUID=$datUUID:lvm root=/dev/mapper/volume-root quiet rw" >> /boot/loader/entries/arch.conf
 
 # add user
-useradd -m -g wheel -s /bin/bash lim
+useradd -m -g wheel -s /bin/bash $username
 visudo
 
 echo "done..."
