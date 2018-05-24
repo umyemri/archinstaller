@@ -55,10 +55,8 @@ mount /dev/sda1 /mnt/boot
 mount /dev/volume/home /mnt/home
 echo "installing base system..."
 sleep 1
-# --noconfirm is generally a bad idea, you should read everything
-# ...do as i say, not as i do
-pacstrap --noconfirm -i /mnt base base-devel wireless_tools wpa_supplicant \
-    xf86-video-intel vim wget
+pacstrap -i /mnt base base-devel wireless_tools wpa_supplicant \
+xf86-video-intel vim wget
 genfstab -U /mnt >> /mnt/etc/fstab
 #### might stop working with the next command... maybe...
 arch-chroot /mnt
