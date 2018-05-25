@@ -1,5 +1,5 @@
 #!/bin/bash
-echo 'hi! can i get some details from you?'
+echo 'yes-hello-hi! can i get some details from you?'
 echo -n '    user name: '
 read username
 echo -n '    computer name: '
