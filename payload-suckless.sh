@@ -1,4 +1,4 @@
-# suckless rice 
+# payload suckless  
 # =====
 # themed around use of dwm, st, surf, dmenu
 #
