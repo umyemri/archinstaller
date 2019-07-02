@@ -15,6 +15,5 @@ alias pin="sudo pacman -S"
 alias pup="sudo pacman -Syu"
 
 # functions
-aurins() { git clone https://aur.archlinux.org/$1.git \\
-&& cd $1 && makepkg --noconfirm -si && cd .. ; }
+aurins() { git clone https://aur.archlinux.org/$1.git && cd $1 && makepkg --noconfirm -si && cd .. ; }
 aurgit() { git clone https://aur.archlinux.org/$1.git && cd $1 ; }
