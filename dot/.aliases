@@ -1,5 +1,20 @@
 #!/bin/bash
 # aliases
 #
-alias ls="ls -c"
 
+# programs
+alias ls="ls -c"
+alias la="ls -a"
+alias ll="ls -l"
+alias lla="ls -la"
+alias r="ranger"
+alias v="vim"
+
+# maintainence
+alias pin="sudo pacman -S"
+alias pup="sudo pacman -Syu"
+
+# functions
+aurins() { git clone https://aur.archlinux.org/$1.git \\
+&& cd $1 && makepkg --noconfirm -si && cd .. ; }
+aurgit() { git clone https://aur.archlinux.org/$1.git && cd $1 ; }
