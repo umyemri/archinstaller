@@ -111,5 +111,5 @@ passwd $username
 
 # exodus
 echo "done!"
-echo "You should run visudo, setup wheel and invalidate root\'s password."
+echo -e "You should run visudo, setup wheel and invalidate root\'s password."
 echo "bye. ∠(ᐛ 」∠)＿"
