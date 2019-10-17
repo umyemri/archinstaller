@@ -18,9 +18,9 @@ Takes some pointers from @LukeSmithxyz LARBS: https://github.com/LukeSmithxyz/LA
 * [draft] japanese input through uim / anthy.
 
 ## Guide
-1. Use initinstall.sh to get the system setup
-2. Use hardening.sh to get the system to not rip itself apart and needlessly expose itself to passersby. #shame!
-3. Use ricing-XXXX.sh to put on some makeup.
+1. Use either install-simple.sh or install-encrypt.sh to get the system setup
+2. [draft] Use hardening.sh to get the system to not rip itself apart and needlessly expose itself to passersby. #shame!
+3. Use payload-XXXX.sh post install to put on some makeup.
 
 ## References
 * https://wiki.archlinux.org/index.php/Installation_guide
