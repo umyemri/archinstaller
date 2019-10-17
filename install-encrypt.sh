@@ -106,6 +106,7 @@ echo "options cryptdevice=UUID=$datUUID:lvm root=/dev/mapper/volume-root quiet r
 
 #===============================================================================
 useradd -m -g wheel -s /bin/bash $username
+passwd $username
 # copying my dot files, you might have other priorities at this point
 # echo ". ~/.aliases" >> /home/$username/.bashrc
 # wget -O /home/$username/.aliases https://raw.githubusercontent.com/umyemri/archinstaller/master/dot/.aliases
