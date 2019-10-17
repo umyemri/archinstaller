@@ -15,9 +15,10 @@ site = "https://raw.githubusercontent.com/$githubuser/archinstaller/master/dot/"
 
 mkdir ~/{docs/{stories,articles,books},vids,pics,data,.config/scripts,tools,games}
 
-packs = "unzip unrar p7zip ntfs-3g dosfstools htop xorg-xinit xorg-server i3-gaps \
+packs = "unzip unrar p7zip ntfs-3g dosfstools exfat-utils htop xorg-xinit xorg-server \
 rxvt-unicode noto-fonts noto-fonts-cjk noto-fonts-emoji feh ffmpeg arandr pulseaudio \
 pamixer mpv ranger mediainfo poppler highlight calcurse newsboat cmus atool compton \
-transset-df markdown mupdf evince youtube-dl screenfetch uim anthy blender krita"
+transset-df markdown mupdf evince youtube-dl screenfetch uim anthy blender krita \
+firefox sigil inkscape i3-gaps"
 
 pin $packs
