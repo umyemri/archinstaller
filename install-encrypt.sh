@@ -62,8 +62,7 @@ swapon /dev/volume/swap
 echo "mounting drives..."
 #===============================================================================
 mount /dev/volume/root /mnt
-mkdir /mnt/boot
-mkdir /mnt/home
+mkdir /mnt/{boot,home}
 mount /dev/sda1 /mnt/boot
 mount /dev/volume/home /mnt/home
 
