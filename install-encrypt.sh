@@ -109,9 +109,11 @@ useradd -m -g wheel -s /bin/bash $username
 passwd $username
 # copying my dot files, you might have other priorities at this point
 # echo ". ~/.aliases" >> /home/$username/.bashrc
-# wget -O /home/$username/.aliases https://raw.githubusercontent.com/umyemri/archinstaller/master/dot/.aliases
-# wget -O /home/$username/.xinitrc https://raw.githubusercontent.com/umyemri/archinstaller/master/dot/.xinitrc
-# wget -O /home/$username/.Xresources https://raw.githubusercontent.com/umyemri/archinstaller/master/dot/.Xresources
+# githubuser = "umyemri"
+# site = "https://raw.githubusercontent.com/$githubuser/archinstaller/master/dot/"
+# wget -O /home/$username/.aliases $site.aliases
+# wget -O /home/$username/.xinitrc $site.xinitrc
+# wget -O /home/$username/.Xresources $site.Xresources
 echo "done..."
 echo "you should do visudo and also disable root\' password."
 echo "bye. ∠(ᐛ 」∠)＿"
