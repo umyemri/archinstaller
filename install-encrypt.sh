@@ -85,7 +85,7 @@ echo $hostname >> /etc/hostname
 
 echo "editing & making things..."
 #===============================================================================
-file=/etc/mkinitcpio.conf
+file="/etc/mkinitcpio.conf"
 search="^\s*HOOKS=.*$"
 replace="HOOKS=\\\"base udev autodetect modconf block keymap encrypt lvm2 filesystems keyboard shutdown fsck usr\\\""
 grep -q "$search" "$file" && sed -i "s#$search#$replace#" "$file" || echo "$replace" >> "$file"
