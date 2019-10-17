@@ -106,18 +106,6 @@ echo "options cryptdevice=UUID=$datUUID:lvm root=/dev/mapper/volume-root quiet r
 #===============================================================================
 useradd -m -g wheel -s /bin/bash $username
 passwd $username
-# copying my dot files, you might have other priorities at this point
-# echo ". ~/.aliases" >> /home/$username/.bashrc
-# githubuser = "umyemri"
-# site = "https://raw.githubusercontent.com/$githubuser/archinstaller/master/"
-# curl -sL $sitedot/.aliases > /home/$username/.aliases
-# curl -sL $sitedot/.xinitrc > /home/$username/.xinitrc
-# curl -sL $sitedot/.Xresources > /home/$username/.Xresources
-# curl -sL $sitepayload-simple.sh > /home/$username/.Xresources
-# wget -O /home/$username/.aliases $sitedot/.aliases
-# wget -O /home/$username/.xinitrc $sitedot/.xinitrc
-# wget -O /home/$username/.Xresources $sitedot/.Xresources
-# mkdir /home/$username/{docs/{stories,articles,books},vids,pics,data,.config/scripts,tools,games}
 echo "done..."
 echo "you should do visudo and also disable root\' password."
 echo "bye. ∠(ᐛ 」∠)＿"
