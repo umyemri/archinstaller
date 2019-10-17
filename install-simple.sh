@@ -9,6 +9,8 @@
 # part 4: system config
 #
 
+packages = "base linux linux-firmware nvidia"
+
 # part 1: disks
 #===================================================================================================
 # user inputs: get desired swap size
@@ -77,7 +79,7 @@ mount /dev/sdb1 /mnt/home
 echo -e "\ninstalling base system...\n"
 sleep 1
 # i like wireguard. maybe you don't. /shrug
-pacstrap -i /mnt base base-devel nvidia linux-headers vim wget wireguard-dkms wireguard-tools
+pacstrap -i /mnt $packages
 
 # part 4: system config
 #===================================================================================================
