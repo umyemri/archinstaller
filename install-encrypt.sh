@@ -72,8 +72,8 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 echo "initial local value setup..."
 #===============================================================================
-arch-chroot ln -sf /mnt/usr/share/zoneinfo/America/Los_Angeles /etc/localtime
-arch-chroot hwclock --systohc --utc
+arch-chroot /mnt ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
+arch-chroot /mnt hwclock --systohc --utc
 # fuck it, i'll just append the locale.gen file...
 echo "en_US.UTF-8 UTF-8  " >> /mnt/etc/locale.gen
 echo "ja_JP.UTF-8 UTF-8  " >> /mnt/etc/locale.gen
