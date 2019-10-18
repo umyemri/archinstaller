@@ -109,5 +109,5 @@ arch-chroot /mnt useradd -m -g wheel -s /bin/bash $username
 arch-chroot /mnt passwd $username
 echo "done..."
 echo "you should do visudo and also disable root\' password."
-echo "bye. (^o^)/"
+echo "bye. (^o^)//"
 exit
