@@ -5,6 +5,8 @@
 # built for uefi - see bootctl
 # assumes sda is the install location and you have a connection to the internet
 #
+# this script works. for now. i will update it when it fails. just let me know.
+#
 
 # feel free to add or remove what you wish
 packages="base base-devel linux linux-firmware linux-headers mkinitcpio lvm2"
@@ -12,7 +14,7 @@ packages+=" wireless_tools wpa_supplicant libmnl wireguard-dkms wireguard-tools"
 packages+=" openresolv macchanger xf86-video-intel vim tmux python python-pip"
 
 echo '\(OoO)/ OH!!'
-echo 'yes-hello-hi! i'm kit. can i get some details from you?'
+echo 'yes-hello-hi! i am kit. can i get some details from you?'
 echo -n '  user name: '
 read username
 echo -n '  computer name: '
@@ -110,4 +112,7 @@ arch-chroot /mnt passwd $username
 echo "done..."
 echo "you should do visudo and also disable root\' password."
 echo "bye. (^o^)//"
-exit
+
+# seriously, use arch-chroot /mnt visudo
+# otherwise strange things are needed to update things.
+# strange... things... (=_= )
