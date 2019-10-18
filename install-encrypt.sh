@@ -1,7 +1,7 @@
 #!/bin/bash
 # arch installer script
 # by andrew
-# works on Dell XPS 13 9360 as of [Insert Date]
+# works on Dell XPS 13 9360 as of 2019-10-17
 # built for uefi - see bootctl
 # assumes sda is the install location and you have a connection to the internet
 #
@@ -11,7 +11,8 @@ packages="base base-devel linux linux-firmware linux-headers mkinitcpio lvm2 \
 wireless_tools wpa_supplicant libmnl wireguard-dkms wireguard-tools \
 openresolv macchanger xf86-video-intel neovim tmux python python-pip"
 
-echo 'yes-hello-hi! can i get some details from you?'
+echo '\(OoO)/ OH!!'
+echo 'yes-hello-hi! i'm kit. can i get some details from you?'
 echo -n '  user name: '
 read username
 echo -n '  computer name: '
@@ -23,6 +24,7 @@ if [ $continue == 'n' ]; then
 	echo 'oh! okay, exiting. bye!'
 	exit
 fi
+echo '(-u-)\ k! on it!'
 sleep 2
 
 echo "partitioning drive..."
@@ -106,5 +108,5 @@ arch-chroot /mnt useradd -m -g wheel -s /bin/bash $username
 arch-chroot /mnt passwd $username
 echo "done..."
 echo "you should do visudo and also disable root\' password."
-echo "bye. ∠(ᐛ 」∠)＿"
+echo "bye. (^o^)/"
 exit
