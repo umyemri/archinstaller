@@ -94,7 +94,7 @@ arch-chroot /mnt bootctl --path=/boot install
 echo "default arch" > /mnt/boot/loader/loader.conf
 echo "timeout 0" >> /mnt/boot/loader/loader.conf
 echo "editor 0" >> /mnt/boot/loader/loader.conf
-datUUID=$(blkid | sed -n '/sda2/s/.*UUID=\"\([^\"]*\)\".*/\1/p')
+datUUID=$(blkid | sed -n '/sda2/s/.* UUID=\"\([^\"]*\)\".*/\1/p')
 touch /mnt/boot/loader/entries/arch.conf
 echo "title Arch" > /mnt/boot/loader/entries/arch.conf
 echo "linux /vmlinuz-linux" >> /mnt/boot/loader/entries/arch.conf
