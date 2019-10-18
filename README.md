@@ -1,20 +1,18 @@
 # archinstaller
-***To the one guy who forked this project (@Tw333x)*** : this is by no means a finished product. Watch out! 
-
-Just a place for my installer scripts.
+Just a place for my installer scripts. Makes things faster for me. Installs in about 7 minutes - depending on the connection speed.
 
 Came from me having to reinstall a system over and over after screwing something up.
 
 Designed to work on a Dell XPS 13 9360 (aka kunkun).
 
-Takes some pointers from @LukeSmithxyz LARBS: https://github.com/LukeSmithxyz/LARBS, but ultimately this is designed so I make my own solutions.
+Takes some pointers from @LukeSmithxyz LARBS: https://github.com/LukeSmithxyz/LARBS, but ultimately this is designed so I [am forced to] make my own solutions.
 
 ## Basic Features
 * Partial Luks LVM2 Disk Encryption (/boot left unencrypted, I'll address full disk at a later date) - only as a theft deterrent: https://en.wikipedia.org/wiki/Plausible_deniability
 * bootctl for EFI Loader
 * two flavors for wm:
   * i3-gaps - basically took @lukesmithxyz LARBS as a template, used it as a tutorial in some ways.
-  * suckless combination (dwm, st, lemonbar) - heavily inspired by @MitchWeaver r/unixporn posts and git repos. love his work!
+  * [draft] suckless combination (dwm, st, lemonbar) - heavily inspired by @MitchWeaver r/unixporn posts and git repos. love his work!
 * [draft] japanese input through uim / anthy.
 
 ## Guide
