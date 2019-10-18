@@ -9,9 +9,12 @@
 #
 
 # feel free to add or remove what you wish
-packages="base base-devel linux linux-firmware linux-headers mkinitcpio lvm2"
-packages+=" wireless_tools wpa_supplicant libmnl wireguard-dkms wireguard-tools"
-packages+=" openresolv macchanger xf86-video-intel vim tmux python python-pip"
+## base
+packages="base base-devel linux-hardened linux-hardened-docs linux-hardened-headers linux-firmware mkinitcpio lvm2"
+## networking
+packages+=" wireless_tools wpa_supplicant wireguard-dkms wireguard-tools openresolv dhcpcd macchanger"
+## misc
+packages+=" xf86-video-intel vim tmux python python-pip"
 
 echo '\(OoO)/ OH!!'
 echo 'yes-hello-hi! i am kit. can i get some details from you?'
