@@ -70,42 +70,41 @@ echo "installing base system..."
 #===============================================================================
 pacstrap -i /mnt $packages
 genfstab -U /mnt >> /mnt/etc/fstab
-arch-chroot /mnt
 
 echo "initial local value setup..."
 #===============================================================================
-ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
-hwclock --systohc --utc
+arch-chroot ln -sf /mnt/usr/share/zoneinfo/America/Los_Angeles /etc/localtime
+arch-chroot hwclock --systohc --utc
 # fuck it, i'll just append the locale.gen file...
-echo "en_US.UTF-8 UTF-8  " >> /etc/locale.gen
-echo "ja_JP.UTF-8 UTF-8  " >> /etc/locale.gen
-locale-gen
-echo $hostname >> /etc/hostname
+echo "en_US.UTF-8 UTF-8  " >> /mnt/etc/locale.gen
+echo "ja_JP.UTF-8 UTF-8  " >> /mnt/etc/locale.gen
+arch-chroot /mnt locale-gen
+echo $hostname >> /mnt/etc/hostname
 
 echo "editing & making things..."
 #===============================================================================
-file="/etc/mkinitcpio.conf"
+file="/mnt/etc/mkinitcpio.conf"
 search="^\s*HOOKS=.*$"
 replace="HOOKS=\\\"base udev autodetect modconf block keymap encrypt lvm2 filesystems keyboard shutdown fsck usr\\\""
 grep -q "$search" "$file" && sed -i "s#$search#$replace#" "$file" || echo "$replace" >> "$file"
-mkinitcpio -p linux
+arch-chroot /mnt mkinitcpio -p linux
 
 echo "installing bootctl..."
 #===============================================================================
-bootctl --path=/boot install
-echo "default arch" >> /boot/loader/loader.conf
-echo "timeout 0" >> /boot/loader/loader.conf
-echo "editor 0" >> /boot/loader/loader.conf
+arch-chroot /mnt bootctl --path=/boot install
+echo "default arch" >> /mnt/boot/loader/loader.conf
+echo "timeout 0" >> /mnt/boot/loader/loader.conf
+echo "editor 0" >> /mnt/boot/loader/loader.conf
 datUUID=$(blkid | sed -n '/sda2/s/.*UUID=\"\([^\"]*\)\".*/\1/p')
-touch /boot/loader/entries/arch.conf
-echo "title Arch" >> /boot/loader/entries/arch.conf
-echo "linux /vmlinuz-linux" >> /boot/loader/entries/arch.conf
-echo "initrd /initramfs-linux.img" >> /boot/loader/entries/arch.conf
-echo "options cryptdevice=UUID=$datUUID:lvm root=/dev/mapper/volume-root quiet rw" >> /boot/loader/entries/arch.conf
+touch /mnt/boot/loader/entries/arch.conf
+echo "title Arch" >> /mnt/boot/loader/entries/arch.conf
+echo "linux /vmlinuz-linux" >> /mnt/boot/loader/entries/arch.conf
+echo "initrd /initramfs-linux.img" >> /mnt/boot/loader/entries/arch.conf
+echo "options cryptdevice=UUID=$datUUID:lvm root=/dev/mapper/volume-root quiet rw" >> /mnt/boot/loader/entries/arch.conf
 
 #===============================================================================
-useradd -m -g wheel -s /bin/bash $username
-passwd $username
+arch-chroot /mnt useradd -m -g wheel -s /bin/bash $username
+arch-chroot /mnt passwd $username
 echo "done..."
 echo "you should do visudo and also disable root\' password."
 echo "bye. ∠(ᐛ 」∠)＿"
