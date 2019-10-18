@@ -15,14 +15,14 @@ packages = "base linux linux-firmware nvidia"
 #===================================================================================================
 # user inputs: get desired swap size
 echo "yes-hello-hi! can i get some details from you?"
-echo -n "    user name: "
+echo -n "  user name: "
 read username
-echo -ne "\n    computer name: "
+echo -n "  computer name: "
 read hostname
-echo -ne "\n    swap size (GiB): "
+echo -n "  swap size (GiB): "
 read swap_size
 echo "okay, $username! i'll get $hostname setup for you with a swap size of $swap_sizeGiB."
-echo -ne "\n    may i begin (y/n)? "
+echo -n "  may i begin (y/n)? "
 read continue
 if [ $continue == 'n' ]; then
 	echo 'oh! okay, exiting. bye!'
