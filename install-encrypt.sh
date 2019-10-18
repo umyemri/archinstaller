@@ -22,6 +22,7 @@ echo -n '  may i begin (y/n)? '
 read continue
 if [ $continue == 'n' ]; then
 	echo 'oh! okay, exiting. bye!'
+	echo '(._. )...'
 	exit
 fi
 echo '(-u-)\ k! on it!'
