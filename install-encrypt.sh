@@ -1,11 +1,12 @@
 #!/bin/bash
-# arch installer script
-# by andrew
-# works on Dell XPS 13 9360 as of 2019-10-17
-# built for uefi - see bootctl
-# assumes sda is the install location and you have a connection to the internet
-#
-# this script works. for now. i will update it when it fails. just let me know.
+# title: archinstaller - encrypted version
+# author: andrew
+# aim: build a hardened version of arch on a Dell XPS 13 9360 with partial disk encryption
+# last working run: 2019-10-17
+# notes:
+#   - assumes sda is the install location and you have a connection to the internet
+#   - built for uefi - see bootctl
+#   - vim tmux python & pip are only so i can get up and running fast on analysis
 #
 
 # feel free to add or remove what you wish
@@ -17,6 +18,7 @@ packages+=" wireless_tools wpa_supplicant wireguard-dkms wireguard-tools openres
 packages+=" xf86-video-intel vim tmux python python-pip"
 
 echo '\(OoO)/ OH!!'
+sleep 1
 echo 'yes-hello-hi! i am kit. can i get some details from you?'
 echo -n '  user name: '
 read username
