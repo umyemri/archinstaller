@@ -7,10 +7,9 @@
 #
 
 # feel free to add or remove what you wish
-packages = "base base-devel linux linux-firmware linux-headers mkinitcpio lvm2 \
+packages="base base-devel linux linux-firmware linux-headers mkinitcpio lvm2 \
 wireless_tools wpa_supplicant libmnl wireguard-dkms wireguard-tools \
-wireguard-arch openresolv macchanger xf86-video-intel neovim tmux python \
-python-pip"
+openresolv macchanger xf86-video-intel neovim tmux python python-pip"
 
 echo 'yes-hello-hi! can i get some details from you?'
 echo -n '  user name: '
