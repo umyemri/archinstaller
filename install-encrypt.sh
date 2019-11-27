@@ -2,7 +2,7 @@
 # title: archinstaller - encrypted version
 # author: andrew
 # aim: build a hardened version of arch on a Dell XPS 13 9360 with partial disk encryption
-# last working run: 2019-10-17
+# last working run: 2019-11-27
 # notes:
 #   - assumes sda is the install location and you have a connection to the internet
 #   - built for uefi - see bootctl
@@ -11,11 +11,14 @@
 
 # feel free to add or remove what you wish
 ## base
-packages="base base-devel linux-hardened linux-hardened-docs linux-hardened-headers linux-firmware mkinitcpio lvm2"
+packages="base base-devel linux linux-docs linux-headers linux-firmware mkinitcpio lvm2 sudo"
 ## networking
 packages+=" wireless_tools wpa_supplicant wireguard-dkms wireguard-tools openresolv dhcpcd macchanger"
-## misc
+## misc - i switch out the intel driver to nvidia depending on if i'm installing on my desktop
 packages+=" xf86-video-intel vim tmux python python-pip"
+## extras i like - uncomment if you want them
+#packages+=" i3-gaps xorg-server xorg-xinit dmenu rxvt-unicode arandr pulseaudio pamixer"
+#packages+=" i3status sxiv mpv cmus ranger firefox blender krita dosbox minetest"
 
 echo '\(OoO)/ OH!!'
 sleep 1
@@ -113,8 +116,9 @@ echo "options cryptdevice=UUID=$datUUID:lvm root=/dev/mapper/volume-root quiet r
 
 #===============================================================================
 arch-chroot /mnt useradd -m -g wheel -s /bin/bash $username
+echo "set a password for $username"
 arch-chroot /mnt passwd $username
-echo "done..."
+echo "all done!"
 echo "you should do visudo and also disable root\' password."
 echo "bye. (^o^)//"
 
