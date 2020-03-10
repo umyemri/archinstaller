@@ -9,9 +9,9 @@ alias ll="ls -l"
 alias lla="ls -la"
 alias r="ranger"
 alias v="vim"
-alias vu='pamixer -i 5'
-alias vd='pamixer -d 5'
-alias vm='pamixer -t'
+alias vu="pamixer -i 5"
+alias vd="pamixer -d 5"
+alias vm="pamixer -t"
 alias pin="sudo pacman -S"
 alias pup="sudo pacman -Syu"
 
