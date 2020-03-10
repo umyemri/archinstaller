@@ -9,10 +9,17 @@ alias ll="ls -l"
 alias lla="ls -la"
 alias r="ranger"
 alias v="vim"
-
-# maintainence
+alias vu='pamixer -i 5'
+alias vd='pamixer -d 5'
+alias vm='pamixer -t'
 alias pin="sudo pacman -S"
 alias pup="sudo pacman -Syu"
+
+# scripts
+alias wuu='sh ~/.config/scripts/wireless.sh home us'
+alias wup='sh ~/.config/scripts/wireless.sh home jp'
+alias wuc='sh ~/.config/scripts/wireless.sh home cz'
+alias wd='sh ~/.config/scripts/wireless.sh down down'
 
 # functions
 aurins() { git clone https://aur.archlinux.org/$1.git && cd $1 && makepkg --noconfirm -si && cd .. ; }
