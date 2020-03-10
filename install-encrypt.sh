@@ -2,7 +2,7 @@
 # title: archinstaller - encrypted version
 # author: andrew
 # aim: build a arch installer for a Dell XPS 13 9360 with partial disk encryption
-# last working run: 2019-11-27
+# last working run: 2020-03-09
 # notes:
 #   - assumes sda is the install location and you have a connection to the internet
 #   - built for uefi - see bootctl
@@ -10,15 +10,16 @@
 #
 
 # feel free to add or remove what you wish
-## base
+## base - you'll need mkinitcpio and lvm2 to mod the kernal for encrypted setup
 packages="base base-devel linux linux-docs linux-headers linux-firmware mkinitcpio lvm2 sudo"
 ## networking - using the dkms varient for wireguard
 packages+=" wireless_tools wpa_supplicant wireguard-dkms wireguard-tools openresolv dhcpcd macchanger"
 ## misc - i switch out the intel driver to nvidia depending on if i'm installing on my desktop
-packages+=" xf86-video-intel vim tmux python python-pip"
-## extras i like - uncomment if you want them
-#packages+=" xorg-server xorg-xinit dmenu arandr pulseaudio pamixer sxiv mpv cmus ranger"
-#packages+=" firefox blender krita dosbox minetest"
+packages+=" xf86-video-intel vim tmux python python-pip sqlite"
+## extras - uncomment if you want them
+#packages+=" xorg-server xorg-xinit dmenu arandr pulseaudio pamixer sxiv mpv cmus ranger newsboat w3m"
+#packages+=" ntfs-3g exfat-utils dosfstools p7zip unrar terminus-font qbittorrent youtube-dl rsync"
+#packages+=" firefox blender krita dosbox minetest noto-fonts noto-fonts-cjk noto-fonts-emoji"
 
 echo '\(OoO)/ OH!!'
 sleep 1
@@ -114,14 +115,13 @@ echo "linux /vmlinuz-linux" >> /mnt/boot/loader/entries/arch.conf
 echo "initrd /initramfs-linux.img" >> /mnt/boot/loader/entries/arch.conf
 echo "options cryptdevice=UUID=$datUUID:lvm root=/dev/mapper/volume-root quiet rw" >> /mnt/boot/loader/entries/arch.conf
 
+echo "clean-up!"
 #===============================================================================
 arch-chroot /mnt useradd -m -g wheel -s /bin/bash $username
 echo "set a password for $username"
 arch-chroot /mnt passwd $username
+arch-chroot /mnt visudo
+arch-chroot /mnt passwd -l root
 echo "all done!"
 echo "you should do visudo and also disable root\' password."
 echo "bye. (^o^)//"
-
-# seriously, use arch-chroot /mnt visudo
-# otherwise strange things are needed to update things.
-# strange... things... (=_= )
