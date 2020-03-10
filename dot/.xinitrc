@@ -1,3 +1,3 @@
 feh --bg-fill ~/.config/wall.png &
-compton -cb & 
+compton -cfb & 
 i3 exec
