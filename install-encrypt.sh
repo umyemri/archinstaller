@@ -12,13 +12,13 @@
 # feel free to add or remove what you wish
 ## base
 packages="base base-devel linux linux-docs linux-headers linux-firmware mkinitcpio lvm2 sudo"
-## networking
+## networking - using the dkms varient for wireguard
 packages+=" wireless_tools wpa_supplicant wireguard-dkms wireguard-tools openresolv dhcpcd macchanger"
 ## misc - i switch out the intel driver to nvidia depending on if i'm installing on my desktop
 packages+=" xf86-video-intel vim tmux python python-pip"
 ## extras i like - uncomment if you want them
-#packages+=" i3-gaps xorg-server xorg-xinit dmenu rxvt-unicode arandr pulseaudio pamixer i3status"
-#packages+=" sxiv mpv cmus ranger firefox blender krita dosbox minetest"
+#packages+=" xorg-server xorg-xinit dmenu arandr pulseaudio pamixer sxiv mpv cmus ranger"
+#packages+=" firefox blender krita dosbox minetest"
 
 echo '\(OoO)/ OH!!'
 sleep 1
