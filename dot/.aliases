@@ -14,6 +14,8 @@ alias vd="pamixer -d 5"
 alias vm="pamixer -t"
 alias pin="sudo pacman -S"
 alias pup="sudo pacman -Syu"
+alias night="xrandr --output eDP-1 --gamma 1.1:0.7:0.5 --brightness 0.6"
+alias day="xrandr --output eDP-1 --gamma 1:1:1 --brightness 1"
 
 # scripts
 alias wuu='sh ~/.config/scripts/wireless.sh home us'
