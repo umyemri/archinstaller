@@ -15,7 +15,8 @@ packages="base base-devel linux linux-docs linux-headers linux-firmware mkinitcp
 ## networking - using the dkms varient for wireguard
 packages+=" wireless_tools wpa_supplicant wireguard-dkms wireguard-tools openresolv dhcpcd macchanger"
 ## misc - i switch out the intel driver to nvidia depending on if i'm installing on my desktop
-packages+=" xf86-video-intel vim tmux python python-pip sqlite"
+## remove xf86-video-intel package as it appears to cause crashing issues on xorg
+packages+=" vim tmux python python-pip sqlite"
 ## extras - uncomment if you want them
 #packages+=" xorg-server xorg-xinit dmenu arandr pulseaudio pamixer sxiv mpv cmus ranger newsboat w3m"
 #packages+=" ntfs-3g exfat-utils dosfstools p7zip unrar terminus-font qbittorrent youtube-dl rsync"
