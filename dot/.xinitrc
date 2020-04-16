@@ -1,3 +1,3 @@
-feh --bg-fill ~/.config/wall.png &
+feh --bg-fill ~/px/wall/wall.png &
 compton -cfb & 
 dwm exec
