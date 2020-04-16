@@ -123,6 +123,9 @@ echo "set a password for $username"
 arch-chroot /mnt passwd $username
 arch-chroot /mnt visudo
 arch-chroot /mnt passwd -l root
+mkdir /mnt/home/$username/{dx,px,vd,dl,tl,.config}
+mkdir /mnt/home/$username/px/wall/
+arch-chroot /mnt chown $username:wheel -R /home/$username/
 echo "all done!"
 echo "you should do visudo and also disable root\' password."
-echo "bye. (^o^)//"
+echo "bye. (^o^)/"
