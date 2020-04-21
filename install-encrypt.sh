@@ -122,10 +122,18 @@ arch-chroot /mnt useradd -m -g wheel -s /bin/bash $username
 echo "set a password for $username"
 arch-chroot /mnt passwd $username
 arch-chroot /mnt visudo
-arch-chroot /mnt passwd -l root
-mkdir /mnt/home/$username/{dx,px,vd,dl,tl,.config}
-mkdir /mnt/home/$username/px/wall/
+
+# uncomment if you like the file structure
+# mkdir /mnt/home/$username/{dx,px,vd,dl,tl,.config}
+# mkdir /mnt/home/$username/px/{unsrt,wall}
+# mkdir /mnt/home/$username/vd/unsrt
+# mkdir /mnt/home/$username/dx/unsrt
+# mkdir /mnt/home/$username/dl/{comp,torr}
+# mkdir /mnt/home/$username/tl/{models,wall,py,sql,aur,git,lua,c}
+# mkdir /mnt/home/$username/.config/scripts/
+
 arch-chroot /mnt chown $username:wheel -R /home/$username/
+arch-chroot /mnt passwd -l root
+
 echo "all done!"
-echo "you should do visudo and also disable root\' password."
 echo "bye. (^o^)/"
